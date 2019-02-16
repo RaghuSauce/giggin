@@ -1,17 +1,12 @@
 (ns giggin.core
-    (:require ))
+  (:require [reagent.core :as r]))
 
-(enable-console-print!)
+(defn app
+  []
+  [:div.container])
 
-(println "yeet")
-
-;; define your app data so that it doesn't get over-written on reload
-
-(defonce app-state (atom {:text "Hello world!"}))
-
-
-(defn on-js-reload []
-  ;; optionally touch your app-state to force rerendering depending on
-  ;; your application
-  ;; (swap! app-state update-in [:__figwheel_counter] inc)
-)
+(defn ^:export main
+  []
+  (r/render
+    [app]
+    (.getElementById js/document "app")))
